@@ -1,13 +1,13 @@
 %define major           1
 %define minor           9
-%define teeny           2
+%define teeny           3
 %define rubyver         %{major}.%{minor}.%{teeny}
 %define ruby_apiversion %{major}.%{minor}.1
-%define rubyminorver    p290
+%define rubyminorver    p0
 
 Name:           ruby
 Version:        %{rubyver}%{rubyminorver}
-Release:        3%{?dist}
+Release:        1%{?dist}
 License:        Ruby License/GPL - see COPYING
 URL:            http://www.ruby-lang.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -148,6 +148,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README.EXT
 %lang(ja) %doc README.EXT.ja
 %{_includedir}/ruby
+%{_libdir}/pkgconfig/ruby-1.9.pc
 
 %files docs
 %defattr(-, root, root, -)
@@ -160,6 +161,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/ri
 
 %changelog
+* Thu Dec 22 2011 Kazuhisa Hara <kazuhisya@gmail.com>
+- Update ruby version to 1.9.3-p0
 * Wed Sep 21 2011 Chris MacLeod <stick@miscellaneous.net>
 - break out into separate packages
 * Mon Aug 29 2011 Gregory Graf <graf.gregory@gmail.com> - 1.9.2-p290
@@ -168,12 +171,10 @@ rm -rf $RPM_BUILD_ROOT
 - Remove non-existant --sitearchdir and --vedorarchdir from %configure
 - Replace --sitedir --vendordir with simpler --libdir
 - Change %{_prefix}/share to %{_datadir}
-
 * Tue Mar 7 2011 Robert Duncan <robert@robduncan.co.uk> - 1.9.2-p180-1
 - Update prerequisites to include make
 - Update ruby version to 1.9.2-p180
 - Install /usr/share documentation
 - (Hopefully!?) platform agnostic
-
 * Sun Jan 2 2011 Ian Meyer <ianmmeyer@gmail.com> - 1.9.2-p136-1
 - Initial spec to replace system ruby with 1.9.2-p136
